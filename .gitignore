@@ -1,0 +1,98 @@
+# Ignore Dockerfiles
+Dockerfile
+**/Dockerfile
+# Ignore these folders
+mobile-app/
+ml/
+docs/
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Python caches & builds
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+__pypackages__/
+
+# Virtual environments
+.env
+.env.*
+.venv/
+venv/
+ENV/
+env/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+.coverage.*
+.cache/
+htmlcov/
+.tox/
+.mypy_cache/
+.pytype/
+.ruff_cache/
+
+# Django
+*.log
+*.pid
+*.sqlite3
+*.sqlite3-journal
+media/
+staticfiles/
+local_settings.py
+
+# Redis
+*.rdb
+
+# Node / frontend
+node_modules/
+.npm/
+.pnpm-debug.log*
+.npmrc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+.eslintcache
+.stylelintcache
+.vite/
+coverage/
+.nyc_output/
+
+# Build outputs
+.celerybeat-schedule
+celerybeat-schedule
+
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.orig
+
+# Misc backups
+*.bak
+*.tmp
+*.temp
+~$*
+
+# Old structure (DO NOT DEPLOY)
+CV Project/
+Screenshots/
+Demo.py
+How to run.txt
+report_template.html
+server.py
+train_expense_model.py
+generate_expense_data.py
+client.py

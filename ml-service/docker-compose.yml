@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  ml-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ml-inference-service
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount model files from local directory
+      - ./models:/app/models:ro
+    environment:
+      - ML_SERVICE_HOST=0.0.0.0
+      - ML_SERVICE_PORT=8000
+      - ML_SERVICE_MODEL_PATH=/app/models/expense_category_model.pkl
+      - ML_SERVICE_VECTORIZER_PATH=/app/models/tfidf_vectorizer.pkl
+      - ML_SERVICE_LOG_LEVEL=INFO
+      - ML_SERVICE_MODEL_PRELOAD=true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M

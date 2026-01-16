@@ -1,0 +1,89 @@
+at# ==========================================
+# Expense Tracker Backend (Railway Compatible)
+# Django REST API - No PDF/Chart Generation
+# ==========================================
+
+# ------------------------------
+# Django Core
+# ------------------------------
+Django>=5.0,<5.2
+djangorestframework>=3.15,<3.16
+djangorestframework-simplejwt>=5.3,<5.5
+django-cors-headers>=4.3,<5.0
+django-filter>=24.0,<25.0
+django-extensions>=3.2,<4.0
+django-timezone-field>=7.0,<8.0
+
+# ------------------------------
+# Authentication & Security
+# ------------------------------
+PyJWT>=2.8,<3.0
+
+# ------------------------------
+# Database
+# ------------------------------
+psycopg2-binary>=2.9,<3.0
+
+# ------------------------------
+# Task Queue
+# ------------------------------
+celery>=5.3,<6.0
+django-celery-beat>=2.6,<3.0
+redis>=5.0,<6.0
+amqp>=5.1,<6.0
+billiard>=4.2,<5.0
+kombu>=5.3,<6.0
+vine>=5.1,<6.0
+
+# ------------------------------
+# Utilities
+# ------------------------------
+python-dateutil>=2.9
+python-crontab>=3.0
+pytz
+cron-descriptor>=1.4
+emoji>=2.0
+
+# ------------------------------
+# HTTP Client (ML service and Report Service calls)
+# ------------------------------
+requests>=2.31,<3.0
+urllib3>=2.0,<3.0
+certifi
+charset-normalizer
+idna
+
+# ------------------------------
+# Payments
+# ------------------------------
+razorpay>=1.4,<2.0
+
+# NOTE: PDF Generation & Analytics moved to Report Service
+# Removed: reportlab, xhtml2pdf, pillow, matplotlib
+# These are now in the separate Report Service microservice
+
+# ------------------------------
+# Server
+# ------------------------------
+gunicorn>=21.0,<22.0
+
+# ------------------------------
+# Template Engine
+# ------------------------------
+Jinja2>=3.1,<4.0
+MarkupSafe>=2.1
+
+# ------------------------------
+# CLI
+# ------------------------------
+click>=8.1
+click-didyoumean>=0.3
+click-plugins>=1.1
+click-repl>=0.3
+colorama>=0.4
+
+# ------------------------------
+# Other
+# ------------------------------
+sqlparse>=0.5
+tzdata

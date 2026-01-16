@@ -74,7 +74,7 @@ class LoginView(APIView):
             "access": str(refresh.access_token),
             "message": "Login successful"
         })
-
+    
 
 
 

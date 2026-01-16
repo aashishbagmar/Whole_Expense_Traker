@@ -72,7 +72,7 @@ INSTALLED_APPS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'financetracker@gmail.com'
+DEFAULT_FROM_EMAIL = 'financetraker@gmail.com'
 
 # Payment gateway configuration removed
 # Add your custom payment settings here if needed
@@ -148,7 +148,7 @@ CORS_ALLOW_HEADERS = [
 # ]
 # CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
-    "https://expense-tracker-frontend.vercel.app",
+    "https://expense-traker-frontend.vercel.app",
 ]
 
 

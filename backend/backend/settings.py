@@ -151,6 +151,7 @@ CORS_ALLOW_HEADERS = [
 # CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "https://expense-traker-frontend.vercel.app",
+    "https://expense-report-traker.onrender.com"
 ]
 
 

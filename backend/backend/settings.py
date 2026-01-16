@@ -32,6 +32,7 @@ SECRET_KEY = 'pqyk*ux40d2ognqntcn8nud7txdcxk!$r^dh@$(z#h=0z9x_^c'
 DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ["expense-traker-backend-production.up.railway.app",
+                 "https://expense-report-traker.onrender.com",
                  "expense-backend-m607.onrender.com",
     ".up.railway.app",
     "localhost",

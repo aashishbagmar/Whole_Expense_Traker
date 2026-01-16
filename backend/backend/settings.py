@@ -45,6 +45,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,9 +109,9 @@ AUTHENTICATION_BACKENDS = [
 MEDIA_URL = '/media/'  # URL to access media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Path
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.gzip.GZipMiddleware',  # Enable compression
+    'corsheaders.middleware.CorsMiddleware',   # MUST BE FIRST
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,6 +119,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 # CORS Configuration
 # Development: Allow localhost
@@ -130,6 +132,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "https://expense-traker-frontend.vercel.app",
+    "https://expense-backend-m607.onrender.com",
     "https://expense-report-traker.onrender.com",
 ]
 
@@ -151,7 +154,9 @@ CORS_ALLOW_HEADERS = [
 # CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "https://expense-traker-frontend.vercel.app",
-    "https://expense-report-traker.onrender.com"
+    "https://expense-report-traker.onrender.com",
+    "https://expense-backend-m607.onrender.com",
+
 ]
 
 

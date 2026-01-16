@@ -21,29 +21,32 @@ class UserPreferenceSerializer(serializers.ModelSerializer):
             'auto_backup', 'budget_notification', 'weekly_reports', 'monthly_analysis'
         ]
 
+# backend/users/serializers.py
+
 class SignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-    username = serializers.CharField(required=False, allow_blank=True)
-    phone_no = serializers.CharField(required=False, allow_blank=True, allow_null=True)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'phone_no']
+        fields = ['email', 'password', 'phone_no']
 
     def create(self, validated_data):
-        username = validated_data.get('username') or (validated_data.get('email') or '').split('@')[0]
-        email = validated_data.get('email')
-        password = validated_data.pop('password')
+        email = validated_data['email']
+        password = validated_data['password']
         phone_no = validated_data.get('phone_no')
 
-        user = User(
-            username=username,
+        user = User.objects.create_user(
+            username=email,      # 🔥 CRITICAL FIX
             email=email,
-            phone_no=phone_no
+            password=password
         )
-        user.set_password(password)
-        user.save()
+
+        if phone_no:
+            user.phone_no = phone_no
+            user.save()
+
         return user
+
 
 
 

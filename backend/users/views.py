@@ -40,24 +40,21 @@ class SignupView(APIView):
         serializer = SignupSerializer(data=request.data)
 
         if not serializer.is_valid():
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
-            )
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         user = serializer.save()
 
         return Response(
             {
-                "message": "User created successfully",
+                "message": "User registered successfully",
                 "user": {
                     "id": user.id,
-                    "username": user.username,
                     "email": user.email
                 }
             },
             status=status.HTTP_201_CREATED
         )
+
 
 
 class LoginView(APIView):
@@ -66,6 +63,7 @@ class LoginView(APIView):
         password = request.data.get("password")
 
         user = authenticate(request, username=email, password=password)
+
         if not user:
             return Response({"error": "Invalid credentials"}, status=401)
 
@@ -76,6 +74,7 @@ class LoginView(APIView):
             "access": str(refresh.access_token),
             "message": "Login successful"
         })
+
 
 
 

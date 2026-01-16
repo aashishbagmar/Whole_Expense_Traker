@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-%5w*&iy%bmgsd#f^_cxlpm25sh-6f@a&1si+^-1f1$@gz_awuj
 DEBUG = False
 
 ALLOWED_HOSTS = ["expense-traker-backend-production.up.railway.app",
+                 "expense-backend-m607.onrender.com",
     ".up.railway.app",
     "localhost",
     "127.0.0.1"]

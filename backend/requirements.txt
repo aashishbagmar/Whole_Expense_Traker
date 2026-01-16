@@ -71,3 +71,6 @@ sqlparse>=0.5
 tzdata
 
 Pillow>=10.0.0
+
+
+dj-database-url>=2.1

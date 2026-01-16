@@ -4,10 +4,13 @@ from .models import Profile, FinancialData, UserPreference
 
 User = get_user_model()
 
+# backend/users/serializers.py
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields =  '__all__'
+        fields = ['id', 'username', 'email', 'phone_no']
+
 
 class UserPreferenceSerializer(serializers.ModelSerializer):
     class Meta:

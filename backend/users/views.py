@@ -33,32 +33,49 @@ def update_avatar(request):
 
 
 
+# backend/users/views.py
+
 class SignupView(APIView):
     def post(self, request):
         serializer = SignupSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+        if not serializer.is_valid():
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
+        user = serializer.save()
+
+        return Response(
+            {
+                "message": "User created successfully",
+                "user": {
+                    "id": user.id,
+                    "username": user.username,
+                    "email": user.email
+                }
+            },
+            status=status.HTTP_201_CREATED
+        )
 
 
 class LoginView(APIView):
     def post(self, request):
-        username = request.data.get("username")
+        email = request.data.get("email")
         password = request.data.get("password")
 
-        user = authenticate(username=username, password=password)
-        if user:
-            refresh = RefreshToken.for_user(user)
-            return Response({
-                "refresh": str(refresh),
-                "access": str(refresh.access_token),
-                "message": "Login successful"
-            }, status=status.HTTP_200_OK)
-        
-        return Response({"error": "Invalid Credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+        user = authenticate(request, username=email, password=password)
+        if not user:
+            return Response({"error": "Invalid credentials"}, status=401)
+
+        refresh = RefreshToken.for_user(user)
+
+        return Response({
+            "refresh": str(refresh),
+            "access": str(refresh.access_token),
+            "message": "Login successful"
+        })
 
 
 

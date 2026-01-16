@@ -26,10 +26,10 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%5w*&iy%bmgsd#f^_cxlpm25sh-6f@a&1si+^-1f1$@gz_awuj'
+SECRET_KEY = 'pqyk*ux40d2ognqntcn8nud7txdcxk!$r^dh@$(z#h=0z9x_^c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ["expense-traker-backend-production.up.railway.app",
                  "expense-backend-m607.onrender.com",

@@ -6,6 +6,7 @@ from .views import user_profile, user_notifications, user_preferences, user_prof
 
 urlpatterns = [
     path('signup/', SignupView.as_view(), name='signup'),
+    path('register/', SignupView.as_view(), name='register'),
     path('login/', LoginView.as_view(), name='login'),
     path('profile/', ProfileSetupView.as_view(), name='profile'),
     path('financial-input/', FinancialInputView.as_view(), name='financial_input'),

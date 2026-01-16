@@ -28,8 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # JWT Authentication Routes
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Login
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Refresh token
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Login
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Refresh token
 
     # API Routes
     path('api/users/', include('users.urls')),

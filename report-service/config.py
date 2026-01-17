@@ -53,7 +53,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: list = [
         "http://localhost:3000",
         "http://localhost:5173",
-        "https://expense-tracker-frontend.vercel.app",
+        "https://expense-traker-frontend.vercel.app",
         "https://expense-tracker-api.railway.app"
     ]
     

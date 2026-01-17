@@ -310,7 +310,7 @@ def generate_pdf_from_html(html_string: str, filename: str) -> bytes:
         logger.error(f"Error generating PDF: {e}", exc_info=True)
         raise
 
-@app.get("/api/analytics/financial-report/")
+@app.post("/api/analytics/financial-report/")
 def render_financial_report_html(report_data: FinancialReportData) -> str:
     """Render financial report HTML from template with data"""
     try:

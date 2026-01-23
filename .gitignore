@@ -1,6 +1,9 @@
 # Ignore all Markdown documentation files
 *.md
 **/*.md
+
+!README.md
+
 # Ignore Dockerfiles
 Dockerfile
 **/Dockerfile

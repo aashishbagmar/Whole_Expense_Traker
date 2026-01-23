@@ -102,3 +102,10 @@ server.py
 train_expense_model.py
 generate_expense_data.py
 client.py
+
+
+
+
+demo.html
+expense_dataset_100k.csv
+generate_expense_dataset.py

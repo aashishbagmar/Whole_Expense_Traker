@@ -5,14 +5,26 @@
 ### Problem
 - Frontend was calling `http://localhost:9000` in production
 - Causing `ERR_CONNECTION_REFUSED` on Vercel
+```bash
+cd frontend
+git add .
+### Step 4: Test on Production
+
+1. Open your Vercel URL: `https://expense-tracker-frontend.vercel.app`
+
+# ✅ Frontend-Backend Connection - COMPLETED
+
+## 🎯 What Was Fixed
+
+### Problem
+- Frontend was calling `http://localhost:9000` in production
+- Causing `ERR_CONNECTION_REFUSED` on Vercel
 - Hardcoded URLs prevented deployment
 
 ### Solution
-- ✅ Replaced all hardcoded `localhost` URLs with environment variables
-- ✅ Used Vite's `import.meta.env.VITE_API_BASE_URL`
-- ✅ Updated 3 files: `api.ts`, `Auth.tsx`, `Reports.tsx`
-- ✅ Created deployment documentation
-- ✅ Verified CORS configuration in backend
+- ✅ All frontend API calls now use `API_BASE_URL` from environment variables (`import.meta.env.VITE_API_BASE_URL`).
+- ✅ No hardcoded URLs remain in production code.
+- ✅ Backend CORS is configured to allow requests from the deployed frontend.
 
 ---
 
@@ -20,19 +32,19 @@
 
 | File | Changes |
 |------|---------|
-| `frontend/src/services/api.ts` | ✅ Now uses `import.meta.env.VITE_API_BASE_URL`<br>✅ Falls back to `localhost:9000` for local dev<br>✅ Exports `API_BASE_URL` for other components |
-| `frontend/src/components/Auth.tsx` | ✅ Imports `API_BASE_URL`<br>✅ Updated signup endpoint<br>✅ Updated login endpoint |
-| `frontend/src/components/Reports.tsx` | ✅ Imports `API_BASE_URL`<br>✅ Updated PDF export endpoint<br>✅ Updated financial report endpoint |
-| `frontend/.env.example` | ✅ Created template for environment variables |
-| `frontend/DEPLOYMENT_CHECKLIST.md` | ✅ Complete deployment guide |
-| `backend/CORS_SETUP.md` | ✅ CORS configuration guide |
-| `backend/backend/settings.py` | ✅ Added production CORS comments |
+| `frontend/src/services/api.ts` | ✅ Uses `API_BASE_URL` from env vars. |
+| `frontend/src/components/Auth.tsx` | ✅ Uses `API_BASE_URL` from env vars. |
+| `frontend/src/components/Reports.tsx` | ✅ Uses `API_BASE_URL` from env vars. |
+| `frontend/.env.example` | ✅ Template for environment variables. |
+| `frontend/DEPLOYMENT_CHECKLIST.md` | ✅ Updated deployment guide. |
+| `backend/CORS_SETUP.md` | ✅ CORS configuration guide. |
+| `backend/backend/settings.py` | ✅ Production CORS settings. |
 
 ---
 
-## 🚀 Deployment Steps (For You)
+## 🚀 Deployment Steps
 
-### Step 1: Set Environment Variable in Vercel
+### 1. Set Environment Variable in Vercel
 
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Select your project: `Expense-Traker-Frontend`
@@ -45,7 +57,7 @@
 5. Apply to: **Production**, **Preview**, **Development**
 6. Save
 
-### Step 2: Update Backend CORS (Optional but Recommended)
+### 2. Update Backend CORS (Recommended)
 
 Edit `backend/backend/settings.py`:
 
@@ -63,23 +75,23 @@ CORS_ALLOW_CREDENTIALS = True
 Push to Railway:
 ```bash
 cd backend
-git add .
-git commit -m "feat: restrict CORS to Vercel domain"
-git push origin main
+### Before Fix
+```
+❌ POST http://localhost:9000/api/token/
 ```
 
-### Step 3: Deploy Frontend
+### 3. Deploy Frontend
 
 ```bash
 cd frontend
-git add .
-git commit -m "fix: use environment variable for API base URL"
-git push origin main
+❌ net::ERR_CONNECTION_REFUSED
+```
+
 ```
 
 Vercel will auto-deploy.
 
-### Step 4: Test on Production
+### 4. Test on Production
 
 1. Open your Vercel URL: `https://expense-tracker-frontend.vercel.app`
 2. Open Browser DevTools → **Console** tab
@@ -98,19 +110,6 @@ Vercel will auto-deploy.
 - [ ] Check console shows Railway URL (not localhost)
 - [ ] Test signup - should work without errors
 - [ ] Test login - should receive JWT tokens
-- [ ] Network tab shows NO `localhost` URLs
-- [ ] No CORS errors in console
-
----
-
-## 🎉 Expected Results
-
-### Before Fix
-```
-❌ POST http://localhost:9000/api/token/
-❌ net::ERR_CONNECTION_REFUSED
-```
-
 ### After Fix
 ```
 ✅ POST https://expense-tracker-backend-production.up.railway.app/api/token/

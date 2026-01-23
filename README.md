@@ -1,3 +1,13 @@
+## Project Summary (at a glance)
+
+- AI-powered personal finance tracker with modern web technologies
+- Microservice architecture: separate backend, ML, and report services
+- Frontend built with Vite/React, deployed on Vercel
+- Backend (Django REST API), ML (FastAPI), and report (FastAPI) services deployed on Render
+- Features: voice input, receipt scanning, AI expense categorization, analytics, group expenses, and reporting
+- All service URLs are managed via environment variables for easy deployment
+- Scalable, cloud-ready, and easy to maintain
+
 
 # AI-Powered Personal Finance Tracker
 
